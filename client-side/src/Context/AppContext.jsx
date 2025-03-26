@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { createContext } from 'react'
 import { dummyCourses } from '../assets/assets';
-import { useNavigate } from 'react-router-dom';
+import { Form, useNavigate } from 'react-router-dom';
 export const AppContext=createContext();
 import humanizeDuration from 'humanize-duration';
+import {useAuth, useUser} from '@clerk/clerk-react'
 
 
 
@@ -14,6 +15,14 @@ export const AppContextProvider=(props)=>{
     const[isEducator, setIsEducator]=useState(true);
     const [enrolledCourses, setEnrolledCourses]=useState([]);
     const navigate=useNavigate();
+
+
+    // generate tokens (to change role of user whereater 'educator'  or 'student')
+    const {getToken}=useAuth();
+    const {user}=useUser();
+
+
+    
 
 
 // fetch all courses
@@ -77,6 +86,19 @@ const calculateNoOfLectures=(course)=>{
 
 }
 
+
+const logToken=async()=>{
+    console.log(await getToken());
+}
+
+
+// get the user role and token  when ever user changes
+useEffect(()=>{
+    if(user)
+    {
+        logToken()
+    }
+},[user])
 
 
 // call fetch all courses function
