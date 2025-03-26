@@ -20,9 +20,6 @@ educatorRouter.get('/dashboard',protectEducator, educatorDashBoardData);
 
 educatorRouter.get('/enrolled-student',protectEducator, getEnrolledStudentData);
 
-
-
-
 export default educatorRouter;
 
 

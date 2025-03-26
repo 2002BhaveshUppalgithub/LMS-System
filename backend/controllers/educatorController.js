@@ -75,7 +75,6 @@ export const addCourse=async (req, res) => {
 
 
 // api for get all corses of particular educator 
-
 export const getEducatorCourses=async(req,res)=>{
 
     try {
