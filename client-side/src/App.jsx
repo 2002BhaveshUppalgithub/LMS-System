@@ -13,6 +13,8 @@ import AddCourse from './Pages/Educator/AddCourse'
 import MyCourses from './Pages/Educator/MyCourses'
 import StudentEnrolled from './Pages/Educator/StudentEnrolled'
 import NavBar from './Components/Students/NavBar'
+import { ToastContainer } from 'react-toastify';
+import "quill/dist/quill.snow.css";
 
 function App() {
 
@@ -21,6 +23,7 @@ function App() {
 
   return (
   <div className='text-default min-h-screen bg-white'>
+    <ToastContainer/>
 
    { !isEducatorRoute && <NavBar/>}
 
@@ -37,7 +40,7 @@ function App() {
       <Route path='/course/:id' element={<CourseDetail/>}/>
 
        {/* display my enrolled  couses */}
-      <Route path='/my-enrolments' element={<MyEnrollment/>}/> 
+      <Route path='/my-enrollments' element={<MyEnrollment/>}/> 
 
         {/* display particular  couses video */}
         <Route path='/player/:courseId' element={<Player/>}/> 
